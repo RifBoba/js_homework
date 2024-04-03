@@ -14,7 +14,7 @@ if (!isNaN(year) && year >= 0) {
     }
 
     // Виведення результату
-    console.log(`Ваш рік: ${year} ${word}`);
+    console.log(`Ваш вік: ${year} ${word}`);
 } else {
     console.log("Будь ласка, введіть додатне число.");
 }
