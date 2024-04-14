@@ -1,17 +1,27 @@
-// Функція pow(x, y) приймає два параметри: x (число) та y (ступінь)
-function pow(x, y) {
-    let result = 1; // Змінна для збереження результату
+function checkProbabilityTheory(count) {
+    let evenCount = 0; // Кількість парних чисел
+    let oddCount = 0; // Кількість непарних чисел
 
-    // Цикл для обчислення x в ступені y
-    for (let i = 0; i < y; i++) {
-        result *= x; // Помножити результат на x
+    for (let i = 0; i < count; i++) {
+        // Генеруємо випадкове число в діапазоні від 100 до 1000 включно
+        const randomNum = Math.floor(Math.random() * 901) + 100;
+
+        if (randomNum % 2 === 0) {
+            evenCount++; // Збільшуємо лічильник парних чисел
+        } else {
+            oddCount++; // Збільшуємо лічильник непарних чисел
+        }
     }
 
-    return result; // Повернути обчислений результат
+    // Обчислюємо відсоткове співвідношення парних до непарних чисел
+    const percentage = (evenCount / count) * 100;
+
+    // Виводимо результати
+    console.log(`Кількість згенерованих чисел: ${count}`);
+    console.log(`Парних чисел: ${evenCount}`);
+    console.log(`Не парних чисел: ${oddCount}`);
+    console.log(`Відсоток парних до не парних: ${percentage.toFixed(2)}%`);
 }
 
-// Виклик функції з числом 2 та ступенем 7
-const base = 2;
-const exponent = 7;
-const result = pow(base, exponent);
-console.log(`pow(${base}, ${exponent}) = ${result}`);
+// Приклад використання
+checkProbabilityTheory(986);

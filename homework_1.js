@@ -1,16 +1,15 @@
-// Оголошення функції drawTrikuntik з двома параметрами: висота трикутника та символ для малювання
-function drawTrikuntik(height, symbol) {
-    // Цикл для проходження по рядках трикутника
-    for (let i = 1; i <= height; i++) {
-        let row = ''; // Змінна для збереження символів в поточному рядку
-        // Цикл для додавання символу до рядка row i разів (від 1 до i)
-        for (let j = 1; j <= i; j++) {
-            row += symbol;
-        }
-        // Вивід рядка на консоль
-        console.log(row);
-    }
+function myIsNaN(value) {
+    // Перевірка, чи передане значення не є числом
+    // (враховуючи, що typeof NaN === 'number')
+    return typeof value === 'number' && value !== value;
 }
 
-// Виклик функції з висотою 5 і символом '*'
-drawTrikuntik(5, '*');
+// Приклади функції:
+console.log(myIsNaN(123)); // false
+console.log(myIsNaN('hello')); // false
+console.log(myIsNaN(NaN)); // true
+console.log(myIsNaN('42')); // false
+console.log(myIsNaN(undefined)); // false
+console.log(myIsNaN(null)); // false
+console.log(myIsNaN(true)); // false
+console.log(myIsNaN(false)); // false
