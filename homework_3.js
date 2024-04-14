@@ -1,28 +1,17 @@
-// Одиниця вимірювання та кількість
-const unit = "км"; // Введіть "км", "год" або "кг"
-const amount = 10; // Введіть кількість
+// Функція pow(x, y) приймає два параметри: x (число) та y (ступінь)
+function pow(x, y) {
+    let result = 1; // Змінна для збереження результату
 
-let convertedValue;
-let convertedUnit;
+    // Цикл для обчислення x в ступені y
+    for (let i = 0; i < y; i++) {
+        result *= x; // Помножити результат на x
+    }
 
-switch (unit) {
-    case "км":
-        convertedValue = amount * 1000;
-        convertedUnit = "м";
-        break;
-    case "год":
-        convertedValue = amount * 60;
-        convertedUnit = "хв";
-        break;
-    case "кг":
-        convertedValue = amount * 1000;
-        convertedUnit = "грм";
-        break;
-    default:
-        console.log("Невідома одиниця виміру. Введіть км, год або кг.");
-        break;
+    return result; // Повернути обчислений результат
 }
 
-if (convertedValue !== undefined) {
-    console.log(`${amount} ${unit} це ${convertedValue} ${convertedUnit}.`);
-}
+// Виклик функції з числом 2 та ступенем 7
+const base = 2;
+const exponent = 7;
+const result = pow(base, exponent);
+console.log(`pow(${base}, ${exponent}) = ${result}`);
