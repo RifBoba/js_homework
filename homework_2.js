@@ -1,24 +1,56 @@
-function pad(str, symbol, count, addToStart) {
-    // Перевірка, чи необхідно додавати символи
-    if (count <= str.length) {
-        return str; // Немає потреби додавати символи
+// Створюємо об'єкт з послугами та їх вартістю
+const services = {
+    "кебаб": "400 грн",
+    "люля кебаб": "280 грн",
+    "шаурма": "340 грн"
+  };
+  
+  // Додаємо нову послугу та її вартість
+  services['Кетчуп'] = "25 грн";
+  services['Майонез'] = "30 грн";
+  
+  // Метод, який обчислює загальну вартість послуг
+  services.price = function() {
+    let total = 0;
+    for (const service in this) {
+      if (typeof this[service] === 'string') {
+        // Видаляємо " грн" зі строки та перетворюємо на число
+        const price = parseFloat(this[service].replace(' грн', ''));
+        total += price;
+      }
     }
-
-    // Обчислення різниці між потрібною кількістю символів та довжиною рядка
-    const diff = count - str.length;
-    // Повторення символу для отримання необхідної кількості
-    const repeatedSymbol = symbol.repeat(diff);
-
-    // Вибір, де додавати символи: на початок або в кінець
-    if (addToStart) {
-        return repeatedSymbol + str; // Додавання до початку рядка
-    } else {
-        return str + repeatedSymbol; // Додавання до кінця рядка
+    return total + ' грн';
+  };
+  
+  // Метод, який повертає мінімальну вартість послуг
+  services.minPrice = function() {
+    let min = Infinity;
+    for (const service in this) {
+      if (typeof this[service] === 'string') {
+        const price = parseFloat(this[service].replace(' грн', ''));
+        if (price < min) {
+          min = price;
+        }
+      }
     }
-}
-
-// Приклади використання
-console.log(pad('qwerty', '+', 5, true)); // 'qwerty'
-console.log(pad('hello', '*', 5, false)); // 'hello'
-console.log(pad('world', '-', 10, true)); // '-----world'
-console.log(pad('test', '#', 8, false)); // 'test####'
+    return min + ' грн';
+  };
+  
+  // Метод, який повертає максимальну вартість послуг
+  services.maxPrice = function() {
+    let max = 0;
+    for (const service in this) {
+      if (typeof this[service] === 'string') {
+        const price = parseFloat(this[service].replace(' грн', ''));
+        if (price > max) {
+          max = price;
+        }
+      }
+    }
+    return max + ' грн';
+  };
+  
+  // Виводимо результати
+  console.log('Загальна вартість послуг:', services.price());
+  console.log('Мінімальна вартість послуг:', services.minPrice());
+  console.log('Максимальна вартість послуг:', services.maxPrice());
